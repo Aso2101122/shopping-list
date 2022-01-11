@@ -1,10 +1,9 @@
 <?php
 require_once './dbmanager.php';
-getDb();
 $stms = getDb();
-$sql = $stms->query('select * from shopping_list where complete_flag = 0 order by registration_date desc');
+$sql = $stms->query('select * from shopping_list s left outer join category c on s.category_id=c.category_id left outer join place p on s.place_id = p.place_id where complete_flag = 0 order by registration_date desc');
 $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-$sql = $stms->query('select * from shopping_list where complete_flag = 1 order by registration_date desc');
+$sql = $stms->query('select * from shopping_list s left outer join category c on s.category_id=c.category_id left outer join place p on s.place_id = p.place_id where complete_flag = 1 order by registration_date desc');
 $complete_result = $sql->fetchAll(PDO::FETCH_ASSOC);
 //追加ボタンが押されたら
 if(isset($_POST['add'])){
@@ -93,10 +92,11 @@ echo '<h2>未完了</h2>';
 foreach($result as $row):?>
 <div class="item-row">
     <form action="index.php" method="post">
-        <button type="submit" name="complete" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="15px"/></button>
+        <button type="submit" name="complete" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="20px"/></button>
         <span><?= $row['name']?></span>
-        <span><?= $row['category_id']?></span>
-        <span><?= $row['place_id']?></span>
+        <span><?= $row['category_name']?></span>
+        <span><?= $row['place_name']?></span>
+        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
         <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
     </form>
 </div>
@@ -106,10 +106,11 @@ foreach($result as $row):?>
     <?php foreach($complete_result as $row):?>
     <div class="item-row">
         <form action="index.php" method="post">
-            <button type="submit" name="uncomplete" value="<?= $row['id'] ?>"><img src="./img/checkbox_1.png" width="15px"/></button>
+            <button type="submit" name="uncomplete" value="<?= $row['id'] ?>"><img src="./img/checkbox_1.png" width="20px"/></button>
             <span><?= $row['name']?></span>
-            <span><?= $row['category_id']?></span>
-            <span><?= $row['place_id']?></span>
+            <span><?= $row['category_name']?></span>
+            <span><?= $row['place_name']?></span>
+            <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
             <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
         </form>
     </div>
