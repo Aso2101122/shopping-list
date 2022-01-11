@@ -73,6 +73,7 @@ if(isset($_POST['delete'])){
 foreach($result as $row):?>
 <div class="item-row">
     <form action="index.php" method="post">
+        <button type="submit" name="complete" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="15px"/></button>
         <input type="checkbox" name="complete" value="<?= $row['id'] ?>">
         <span><?= $row['name']?></span>
         <span><?= $row['category_id']?></span>
@@ -85,8 +86,7 @@ foreach($result as $row):?>
     <?php foreach($complete_result as $row):?>
     <div class="item-row">
         <form action="index.php" method="post">
-            <button>☑</button>
-            <input type="checkbox" name="complete" value="<?= $row['id'] ?>">
+            <button type="submit" name="uncomplete" value="<?= $row['id'] ?>"><img src="./img/checkbox_1.png" width="15px"/></button>
             <span><?= $row['name']?></span>
             <span><?= $row['category_id']?></span>
             <span><?= $row['place_id']?></span>
