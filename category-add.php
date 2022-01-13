@@ -35,28 +35,32 @@ if(isset($_POST['delete'])){
 <head>
     <meta charset="UTF-8">
     <title>カテゴリ追加</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a href="index.php">戻る</a>
-<h1>カテゴリ追加</h1>
-<div>
-    <form action="./category-add.php" method="post">
-        <h2>入力</h2>
-        <input type="text" name="name"/>
-        <input type="color" name="color"/>
-        <button type="submit" name="add">追加</button>
-    </form>
+<div class="main">
+    <a href="index.php">戻る</a>
+    <h1>カテゴリ追加</h1>
+    <div>
+        <form action="./category-add.php" method="post">
+            <h2>入力</h2>
+            <input type="text" name="name"/>
+            <input type="color" name="color"/>
+            <button type="submit" name="add">追加</button>
+        </form>
 
+    </div>
+
+    <?php foreach($result as $row):?>
+        <div class="item-row">
+            <form action="category-add.php" method="post">
+                <span><?= $row['category_name']?></span>
+                <span><?= $row['category_color']?></span>
+                <button type="submit" name="delete" value="<?= $row['category_id'] ?>">削除</button>
+            </form>
+        </div>
+    <?php endforeach; ?>
 </div>
 
-<?php foreach($result as $row):?>
-<div class="item-row">
-    <form action="category-add.php" method="post">
-        <span><?= $row['category_name']?></span>
-        <span><?= $row['category_color']?></span>
-        <button type="submit" name="delete" value="<?= $row['category_id'] ?>">削除</button>
-    </form>
-</div>
-<?php endforeach; ?>
 </body>
 </html>

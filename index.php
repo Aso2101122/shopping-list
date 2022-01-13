@@ -32,6 +32,8 @@ if(isset($_POST['add'])){
         $sql->bindValue(3,$_POST['place']);
         $sql->execute();
         $stmt = null;
+        header('Location: ./');
+        exit;
     }
 }
 
@@ -82,7 +84,9 @@ if(isset($_POST['delete'])){
 </head>
 <body>
 <div class="main">
-    <h1>買い物リスト</h1>
+    <div class="page-title">
+        <h1 class="page-title">買い物リスト</h1>
+    </div>
     <h2>入力</h2>
     <div class="input-area">
         <form action="index.php" method="post">
@@ -107,8 +111,10 @@ if(isset($_POST['delete'])){
                     <option value="place-add.php">場所を追加</option>
                 </select>
             </div>
+            <div class="add-button-area">
+                <button type="submit" name="add" class="add-button">追加する</button>
+            </div>
 
-            <button type="submit" name="add">追加</button>
         </form>
     </div>
 
@@ -127,8 +133,9 @@ if(isset($_POST['delete'])){
             <?php endforeach; ?>
         </select>
     </div>
-    <h2>未完了</h2>
-    <form action="index.php" method="post">
+    <h2 class="table-title">未完了</h2>
+    <?php if(count($result) >= 1):?>
+        <form action="index.php" method="post">
         <table>
             <tr>
                 <th></th>
@@ -140,33 +147,37 @@ if(isset($_POST['delete'])){
             </tr>
         <?php
         foreach($result as $row):?>
-            <tr>
-                <div class="item-row">
-                    <td class="check">
-                        <button type="submit" name="complete" class="check-button" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="18px" class="complete-img"/></button>
-                    </td>
-                    <td class="name">
-                        <span class="item-text"><?= $row['name']?></span>
-                    </td>
-                    <td class="category">
-                        <span class="item-text"><?= $row['category_name']?></span>
-                    </td>
-                    <td class="place">
-                        <span class="item-text"><?= $row['place_name']?></span>
-                    </td>
-                    <td class="edit">
-                        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
-                    </td>
-                    <td class="delete">
-                        <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
-                    </td>
-                </div>
-            </tr>
-        <?php endforeach; ?>
-        </table>
+    <tr>
+        <div class="item-row">
+            <td class="check">
+                <button type="submit" name="complete" class="check-button" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="18px" class="complete-img"/></button>
+            </td>
+            <td class="name">
+                <span class="item-text"><?= $row['name']?></span>
+            </td>
+            <td class="category">
+                <span class="item-text"><?= $row['category_name']?></span>
+            </td>
+            <td class="place">
+                <span class="item-text"><?= $row['place_name']?></span>
+            </td>
+            <td class="edit">
+                <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'" class="edit-button">編集</button>
+            </td>
+            <td class="delete">
+                <button type="submit" name="delete" class="delete-button" value="<?= $row['id'] ?>">削除</button>
+            </td>
+        </div>
+    </tr>
+    <?php endforeach; ?>
+    </table>
     </form>
-    <h2>完了</h2>
-    <div class="complete-row">
+    <?php else:
+        echo '<p class="item-none">項目がありません</p>';
+    endif;
+    ?>
+    <h2 class="table-title">完了</h2>
+    <?php if(count($complete_result) >= 1):?>
         <form action="index.php" method="post">
             <table>
                 <tr>
@@ -193,19 +204,21 @@ if(isset($_POST['delete'])){
                         <span class="item-text"><?= $row['place_name']?></span>
                     </td>
                     <td class="edit">
-                        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
+                        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'" class="edit-button">編集</button>
                     </td>
                     <td class="delete">
-                        <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
+                        <button type="submit" name="delete" class="delete-button" value="<?= $row['id'] ?>">削除</button>
                     </td>
                 </div>
             </tr>
         <?php endforeach; ?>
             </table>
         </form>
-    </div>
+    <?php else:
+        echo '<p class="item-none">項目がありません</p>';
+    endif;
+    ?>
 </div>
-<input type="checkbox">
 <script src="script.js"></script>
 </body>
 </html>

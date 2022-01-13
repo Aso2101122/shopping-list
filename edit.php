@@ -33,40 +33,44 @@ if(isset($_POST['save'])){
 <head>
     <meta charset="UTF-8">
     <title>買い物リスト：編集</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a href="index.php">戻る</a>
-<h1>編集</h1>
-<form action="edit.php?id=<?= $_GET['id'] ?>" method="post">
-    <span>品名</span>
-    <input type="hidden" name="id" value="<?= $result[0]['id'] ?>"/>
-    <input type="text" name="name" value="<?= $result[0]['name'] ?>"/>
-    <span>カテゴリー：</span>
-    <select name="category" id="category-select" onChange="categoryAdd()">
-        <?php foreach($category_result as $row):?>
-            <?php
-            $category_selected = '';
-            if($row['category_id'] == $result[0]['category_id']){
-                $category_selected = 'selected';
-            }
-            ?>
-            <option value="<?= $row['category_id']?>"<?= $category_selected ?>><?= $row['category_name'] ?></option>
-        <?php endforeach; ?>
-        <option value="category-add.php">カテゴリを追加</option>
-    </select>
-    <span>場所：</span>
-    <select name="place" id="place-select" onChange="placeAdd()">
-        <?php foreach($place_result as $row):?>
-            <?php
-            $place_selected = '';
-            if($row['place_id'] == $result[0]['place_id']){
-                $place_selected = 'selected';
-            }
-            ?>
-            <option value="<?= $row['place_id']?>"<?= $place_selected ?>><?= $row['place_name'] ?></option>
-        <?php endforeach; ?>
-        <option value="place-add.php">場所を追加</option>
-    </select>
-    <button type="submit" name="save" value="true">保存</button>
-</form>
+<div class="main">
+    <a href="index.php">戻る</a>
+    <h1>編集</h1>
+    <form action="edit.php?id=<?= $_GET['id'] ?>" method="post">
+        <span>品名</span>
+        <input type="hidden" name="id" value="<?= $result[0]['id'] ?>"/>
+        <input type="text" name="name" value="<?= $result[0]['name'] ?>"/><br>
+        <span>カテゴリー：</span>
+        <select name="category" id="category-select" onChange="categoryAdd()">
+            <?php foreach($category_result as $row):?>
+                <?php
+                $category_selected = '';
+                if($row['category_id'] == $result[0]['category_id']){
+                    $category_selected = 'selected';
+                }
+                ?>
+                <option value="<?= $row['category_id']?>"<?= $category_selected ?>><?= $row['category_name'] ?></option>
+            <?php endforeach; ?>
+            <option value="category-add.php">カテゴリを追加</option>
+        </select><br>
+        <span>場所：</span>
+        <select name="place" id="place-select" onChange="placeAdd()">
+            <?php foreach($place_result as $row):?>
+                <?php
+                $place_selected = '';
+                if($row['place_id'] == $result[0]['place_id']){
+                    $place_selected = 'selected';
+                }
+                ?>
+                <option value="<?= $row['place_id']?>"<?= $place_selected ?>><?= $row['place_name'] ?></option>
+            <?php endforeach; ?>
+            <option value="place-add.php">場所を追加</option>
+        </select><br>
+        <button type="submit" name="save" value="true">保存</button>
+    </form>
+</div>
+
 </body>

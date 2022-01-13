@@ -34,26 +34,29 @@ if(isset($_POST['delete'])){
 <head>
     <meta charset="UTF-8">
     <title>場所追加</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<a href="index.php">戻る</a>
-<h1>場所追加</h1>
-<div>
-    <form action="./place-add.php" method="post">
-        <h2>入力</h2>
-        <input type="text" name="name"/>
-        <button type="submit" name="add">追加</button>
-    </form>
-
-</div>
-
-<?php foreach($result as $row):?>
-    <div class="item-row">
-        <form action="place-add.php" method="post">
-            <span><?= $row['place_name']?></span>
-            <button type="submit" name="delete" value="<?= $row['place_id'] ?>">削除</button>
+<div class="main">
+    <a href="index.php">戻る</a>
+    <h1>場所追加</h1>
+    <div>
+        <form action="./place-add.php" method="post">
+            <h2>入力</h2>
+            <input type="text" name="name"/>
+            <button type="submit" name="add">追加</button>
         </form>
+
     </div>
-<?php endforeach; ?>
+
+    <?php foreach($result as $row):?>
+        <div class="item-row">
+            <form action="place-add.php" method="post">
+                <span><?= $row['place_name']?></span>
+                <button type="submit" name="delete" value="<?= $row['place_id'] ?>">削除</button>
+            </form>
+        </div>
+    <?php endforeach; ?>
+</div>
 </body>
 </html>

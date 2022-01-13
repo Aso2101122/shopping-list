@@ -1,15 +1,12 @@
-body{
-}
+
 h1{
     font-size: 1.8em;
-    margin-top: 30px;
     margin-bottom: 10px;
 }
 h2{
     font-size: 1.3em;
     margin-top: 8px;
     margin-bottom: 5px;
-    /*border-bottom: #77d3e7 solid 2px;*/
 }
 
 select{
@@ -19,7 +16,7 @@ select{
 
 table{
     width: 500px;
-    margin: 15px 0;
+    margin: 0 auto;
 }
 
 th{
@@ -31,15 +28,27 @@ td{
 }
 
 div.main{
-    width: 700px;
+    width: 620px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    background-color: white;
+    padding: 30px 10px;
+}
+
+div.page-title{
+    text-align: center;
+}
+
+
+h1.page-title{
+
 }
 
 /*入力欄*/
 div.input-area{
     background-color: #f3f3f3;
-    padding: 20px 30px;
+    padding: 15px 60px;
 }
 
 /*品目入力エリア*/
@@ -48,47 +57,55 @@ div.name-area{
 }
 /*品名入力欄*/
 input.name{
-    padding: 3px;
-    width: 70%;
+    padding:5px;
+    width: 82%;
 }
 
 
 div.select-area{
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
 /*カテゴリ選択エリア*/
 select.category-select-box{
-   margin-right: 20px;
+   margin-right: 70px;
 }
 
-/*場所選択エリア*/
-div.place-area{
+
+div.add-button-area{
+    text-align: center;
+}
+
+button.add-button {
+    width: 130px;
+    height: 30px;
+    background-color: #4FDFFF;
+    border: #4FDFFF solid 1px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+/*ボタンをクリックしたときは明るくする*/
+button.add-button:hover,
+button.edit-button:hover,
+button.delete-button:hover
+{
+    opacity: 0.6;
+    filter: brightness(105%);
 }
 
 /*絞込み*/
 div.refinement-area{
     float: right;
-    margin: 10px 10px 0 0;
+    margin: 15px 50px 0 0;
 }
 
 select.refinement-select{
     height: 25px;
     padding: 3px;
 }
-
-
-/*div.item-row{*/
-/*    display: flex;*/
-/*    margin: 5px 0;*/
-/*}*/
-
-/*div.item-row > span{*/
-/*    display: block;*/
-/*}*/
-
-/*span.check-button{*/
-/*}*/
 
 button.check-button{
     border: none;
@@ -104,6 +121,37 @@ button.check-button:active{
     filter: brightness(110%);
 }
 
+/*編集ボタン*/
+button.edit-button{
+    width: 50px;
+    height: 30px;
+    background-color: #ffffff;
+    border: #c7c7c7 solid 2px;
+    color: #5d5d5d;
+    font-size: 0.8em;
+    border-radius: 3px;
+}
+
+/*削除ボタン*/
+button.delete-button{
+    width: 50px;
+    height: 30px;
+    background-color: #ff3939;
+    border: #ff3939 solid 1px;
+    color: #ffffff;
+    font-size: 0.8em;
+    border-radius: 3px;
+}
+
+
+
+
+h2.table-title{
+    margin: 15px 40px 5px 40px;
+    padding-bottom: 3px;
+    width: auto;
+    border-bottom: solid black 1px;
+}
 
 td.check{
     width: 6%
@@ -129,4 +177,6 @@ td.delete{
     width: 10%
 }
 
-
+p.item-none{
+    text-align: center;
+}
