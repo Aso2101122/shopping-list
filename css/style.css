@@ -17,6 +17,19 @@ select{
     height: 25px;
 }
 
+table{
+    width: 500px;
+    margin: 15px 0;
+}
+
+th{
+    text-align: left;
+}
+
+td{
+    height: 40px;
+}
+
 div.main{
     width: 700px;
     margin-left: auto;
@@ -64,21 +77,56 @@ select.refinement-select{
     padding: 3px;
 }
 
-div.item-row > span{
-    height: 25px;
-}
 
-span.check-button{
-}
+/*div.item-row{*/
+/*    display: flex;*/
+/*    margin: 5px 0;*/
+/*}*/
+
+/*div.item-row > span{*/
+/*    display: block;*/
+/*}*/
+
+/*span.check-button{*/
+/*}*/
 
 button.check-button{
     border: none;
     padding: 0;
     background-color: transparent;
-    width: 25px;
-    height:25px;
+    width: 10px;
+    height:10px;
 }
 
+/*ボタンをクリックしたときは明るくする*/
 button.check-button:active{
-    background-color: #dedede;
+    opacity: 0.6;
+    filter: brightness(110%);
 }
+
+
+td.check{
+    width: 6%
+}
+
+td.name{
+    width: 40.8%
+}
+
+td.category{
+    width: 16.6%
+}
+
+td.place{
+    width: 16.6%
+}
+
+td.edit{
+    width: 10%
+}
+
+td.delete{
+    width: 10%
+}
+
+

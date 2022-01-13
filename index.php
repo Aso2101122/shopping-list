@@ -129,33 +129,79 @@ if(isset($_POST['delete'])){
     </div>
     <h2>未完了</h2>
     <form action="index.php" method="post">
-    <?php
-    foreach($result as $row):?>
-        <div class="item-row">
-            <span class="check-button"><button type="submit" name="complete" class="check-button" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="25px" class="complete-img"/></button></span>
-                <span><?= $row['name']?></span>
-                <span><?= $row['category_name']?></span>
-                <span><?= $row['place_name']?></span>
-                <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
-                <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
-
-        </div>
-    <?php endforeach; ?>
+        <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>カテゴリ</th>
+                <th>場所</th>
+                <th></th>
+                <th></th>
+            </tr>
+        <?php
+        foreach($result as $row):?>
+            <tr>
+                <div class="item-row">
+                    <td class="check">
+                        <button type="submit" name="complete" class="check-button" value="<?= $row['id'] ?>"><img src="./img/checkbox_0.png" width="18px" class="complete-img"/></button>
+                    </td>
+                    <td class="name">
+                        <span class="item-text"><?= $row['name']?></span>
+                    </td>
+                    <td class="category">
+                        <span class="item-text"><?= $row['category_name']?></span>
+                    </td>
+                    <td class="place">
+                        <span class="item-text"><?= $row['place_name']?></span>
+                    </td>
+                    <td class="edit">
+                        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
+                    </td>
+                    <td class="delete">
+                        <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
+                    </td>
+                </div>
+            </tr>
+        <?php endforeach; ?>
+        </table>
     </form>
     <h2>完了</h2>
     <div class="complete-row">
         <form action="index.php" method="post">
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>カテゴリ</th>
+                    <th>場所</th>
+                    <th></th>
+                    <th></th>
+                </tr>
         <?php foreach($complete_result as $row):?>
-            <div class="item-row">
-                <div><button type="submit" name="uncomplete" value="<?= $row['id'] ?>"><img src="./img/checkbox_1.png" width="25px" class="complete-img"/></button></div>
-                <span><?= $row['name']?></span>
-                <span><?= $row['category_name']?></span>
-                <span><?= $row['place_name']?></span>
-                <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
-                <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
-
-            </div>
+                <tr>
+                <div class="item-row">
+                    <td class="check">
+                        <button type="submit" name="uncomplete" class="check-button" value="<?= $row['id'] ?>"><img src="./img/checkbox_1.png" width="18px" class="complete-img"/></button>
+                    </td>
+                    <td class="name">
+                        <span class="item-text"><?= $row['name']?></span>
+                    </td>
+                    <td class="category">
+                        <span class="item-text"><?= $row['category_name']?></span>
+                    </td>
+                    <td class="place">
+                        <span class="item-text"><?= $row['place_name']?></span>
+                    </td>
+                    <td class="edit">
+                        <button type="button" onclick="location.href='./edit.php?id=<?= $row['id'] ?>'">編集</button>
+                    </td>
+                    <td class="delete">
+                        <button type="submit" name="delete" value="<?= $row['id'] ?>">削除</button>
+                    </td>
+                </div>
+            </tr>
         <?php endforeach; ?>
+            </table>
         </form>
     </div>
 </div>
