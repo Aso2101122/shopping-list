@@ -1,0 +1,84 @@
+body{
+}
+h1{
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+h2{
+    font-size: 1.3em;
+    margin-top: 8px;
+    margin-bottom: 5px;
+    /*border-bottom: #77d3e7 solid 2px;*/
+}
+
+select{
+    padding: 3px;
+    height: 25px;
+}
+
+div.main{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*入力欄*/
+div.input-area{
+    background-color: #f3f3f3;
+    padding: 20px 30px;
+}
+
+/*品目入力エリア*/
+div.name-area{
+    margin-bottom: 5px;
+}
+/*品名入力欄*/
+input.name{
+    padding: 3px;
+    width: 70%;
+}
+
+
+div.select-area{
+    margin: 10px 0;
+}
+
+/*カテゴリ選択エリア*/
+select.category-select-box{
+   margin-right: 20px;
+}
+
+/*場所選択エリア*/
+div.place-area{
+}
+
+/*絞込み*/
+div.refinement-area{
+    float: right;
+    margin: 10px 10px 0 0;
+}
+
+select.refinement-select{
+    height: 25px;
+    padding: 3px;
+}
+
+div.item-row > span{
+    height: 25px;
+}
+
+span.check-button{
+}
+
+button.check-button{
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    width: 25px;
+    height:25px;
+}
+
+button.check-button:active{
+    background-color: #5d5d5d;
+}
