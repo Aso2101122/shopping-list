@@ -35,6 +35,8 @@ if(isset($_POST['save'])){
     <title>買い物リスト：編集</title>
 </head>
 <body>
+<a href="index.php">戻る</a>
+<h1>編集</h1>
 <form action="edit.php?id=<?= $_GET['id'] ?>" method="post">
     <span>品名</span>
     <input type="hidden" name="id" value="<?= $result[0]['id'] ?>"/>
